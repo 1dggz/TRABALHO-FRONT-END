@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"> <!-- Exportar icones -->
+    <link rel="stylesheet" href="style.css">
+    <title>Organizador de Tarefas</title>
+</head>
+<body>
+    <main class="container">
+        <form id="loginForm" onsubmit="login(event)"> <!-- Formulário de Login -->
+            
+            <h1>Login</h1>
+            <div class="input-box">
+                <input placeholder="Usuário" type="email" id="loginUser">
+                <i class="bx bxs-user"></i> <!-- Icone login -->
+            </div>
+            
+            <div class="input-box">
+                <input placeholder="Senha" type="password" id="loginPass">
+                <i class="bx bxs-lock-alt"></i> <!-- Icone Cadeado -->
+            </div>
+            
+            <div class="remember-forgot"> <!-- Lembrar/Esqueceu a senha -->
+                <label>
+                    <input type="checkbox" id="rememberMe">Lembrar senha
+                </label>
+                <a href="#">Esqueci minha senha</a>
+            </div>
+            <button type="submit" class="login">Entrar</button>
+            
+            <div class="register-link" > <!-- Caso não possua conta -->
+                <p>Não possui conta? <a href="#" onclick="showRegister()">Cadastre-se</a></p>
+            </div>    
+        </form>
+
+        <form id="registerForm" class="hidden" onsubmit="register(event)"> <!-- Formulário de Cadastro -->
+            
+            <h1>Cadastro</h1>
+            <div class="input-box">
+                <input placeholder="Usuário" type="email" id="registerUser">
+                <i class="bx bxs-user"></i> <!-- Icone login -->
+            </div>
+
+            <div class="input-box">
+                <input placeholder="Senha" type="password" id="registerPass">
+                <i class="bx bxs-lock-alt"></i> <!-- Icone Cadeado -->
+            </div>
+            <button type="submit" class="register">Cadastrar</button>
+            
+            <div class="login-link"> <!-- Caso já possua conta-->
+                <p>Já tem conta? <a href="#" onclick="showLogin()">Entrar</a></p>
+            </div>
+
+        </form>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
+
+<!-- FALTA Adicionar, Remover, Visualizar e Atualizar tarefas-->
