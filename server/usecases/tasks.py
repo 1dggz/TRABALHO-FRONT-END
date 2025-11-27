@@ -39,7 +39,7 @@ def get_task(db: Session, task_id: int, user: User) -> Task:
 def update_task(db: Session, task_id: int, payload: TaskUpdate, user: User) -> Task:
     task = get_task(db, task_id, user)
 
-    update_data = payload.dict(exclude_unset=True)
+    update_data = payload.model_dump(exclude_unset=True)
     for field, value in update_data.items():
         setattr(task, field, value)
 

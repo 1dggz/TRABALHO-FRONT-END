@@ -116,7 +116,7 @@ def create_task_endpoint(
 
 @app.get(
     "/tasks",
-    response_model=TaskList,
+    response_model=list[TaskRead],
     tags=["tasks"],
 )
 def list_tasks_endpoint(
@@ -124,7 +124,7 @@ def list_tasks_endpoint(
     current_user: User = Depends(get_current_user),
 ):
     tasks = list_tasks(db, current_user)
-    return TaskList(tasks=tasks)
+    return tasks
 
 
 @app.get(
@@ -154,7 +154,6 @@ def update_task_endpoint(
     current_user: User = Depends(get_current_user),
 ):
     return update_task(db, task_id, payload, current_user)
-
 
 @app.delete(
     "/tasks/{task_id}",

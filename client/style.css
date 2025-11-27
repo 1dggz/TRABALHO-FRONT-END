@@ -173,4 +173,226 @@ body {
 
 
 
-/* FALTA PERSONALIZAR E ADICIONAR AS NOVAS FUNÇÕES ( ADICIONAR,REMOVER,ATUALIZAR E VISUALIZAR TAREFAS).
+/* --- ESTILOS ESPECÍFICOS PARA A PÁGINA DE TAREFAS (todos.html) --- */
+
+/* 1. Container Principal (Mantém a borda, fundo transparente e sombra do .container) */
+.container-todos {
+    /* Herda o estilo visual do .container, mas muda a largura */
+    width: 800px; /* Tornamos mais largo para a lista de tarefas */
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 10px;
+    color: white;
+    padding: 30px 40px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    backdrop-filter: blur(20px);
+    /* Garante que o container-todos seja centralizado, caso não esteja na tag main */
+    margin: 50px auto; 
+}
+
+/* Centraliza o título principal H1 */
+.container-todos h1 {
+    text-align: center;
+    font-size: 36px; /* Mantém o tamanho do h1 do login */
+    margin-bottom: 20px; /* Adiciona um espaço abaixo do título */
+}
+
+/* Se quiser centralizar também os subtítulos (H2) */
+.container-todos h2 {
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+/* 2. Estilo para o Input de Adicionar Tarefa (Reutiliza .input-box) */
+#addTaskForm {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+    align-items: center; /* Alinha o input e o botão */
+}
+
+#newTaskTitle {
+    /* Estilo do input herdado de .input-box input */
+    flex-grow: 1; 
+    height: 50px;
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 40px;
+    outline: none;
+    font-size: 16px;
+    color: white;
+    padding: 20px 20px; /* Ajuste o padding, pois não há ícone aqui */
+}
+
+/* 3. Estilo para o Botão de Adicionar (Reutiliza .register / .login) */
+#addTaskForm button {
+    /* Padrão visual dos botões de Login/Cadastro */
+    min-width: 120px;
+    height: 50px;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600; 
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+#addTaskForm button:hover {
+    /* Efeito hover do botão */
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    color: white;
+    transition: 0.5s;
+}
+
+/* 4. Lista de Tarefas (READ/UPDATE/DELETE) */
+.task-list {
+    list-style: none;
+    padding: 0;
+    padding-bottom: 20px;
+}
+
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Borda sutil */
+    font-size: 17px;
+}
+
+/* 5. Estilos de Texto e Edição */
+.task-content {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.task-title-display {
+    margin-left: 10px;
+    padding: 5px;
+}
+
+.task-title-display.completed {
+    text-decoration: line-through;
+    color: #ccc;
+}
+
+.task-title-input {
+    /* Input de Edição (Usa padrão de input, mas sem a borda arredondada completa para ser menos intrusivo) */
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, .5);
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    padding: 5px 10px;
+    margin-left: 10px;
+    flex-grow: 1;
+    display: none; /* Escondido por padrão */
+}
+
+.edit-mode .task-title-display {
+    display: none;
+}
+
+.edit-mode .task-title-input {
+    display: block; /* Mostra no modo de edição */
+}
+
+/* 6. Ações (Botões de Editar/Remover) */
+.task-actions button {
+    /* Botões menores para a lista, com o mesmo background e hover */
+    background-color: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    color: #333;
+    font-size: 14px;
+    padding: 5px 10px;
+    margin-left: 5px;
+    transition: 0.3s;
+    font-weight: 00;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.task-actions button:hover {
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, .5);
+    color: white;
+}
+
+.task-actions button i {
+    font-size: 16px;
+    /* margin-right: 3px; */
+}
+
+.task-actions .delete-btn:hover {
+    background-color: #e74c3c; /* Fundo Vermelho */
+    color: black; /* Texto Branco */
+    border: 1px solid #e74c3c; /* Borda Vermelha para combinar */
+}
+
+.task-actions .edit-btn:hover{
+    background-color: #3498db; /* Azul Escuro/Cinzento (Dark Blue Gray) */
+    color: black; /* Garante que o texto e o ícone fiquem brancos */
+    border: 1px solid #3498db; /* Borda da mesma cor */
+}
+
+/* Checkbox (para o status de concluído) */
+.task-content input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: #2ecc71; /* Usa a cor principal do gradiente */
+}
+
+/* --- ESTILO PARA O BOTÃO SAIR NA PARTE INFERIOR --- */
+.logout-btn-bottom {
+    /* Herda o padrão de cor, formato e sombra do botão de login/cadastro */
+    width: 100%;
+    height: 50px;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #333;
+    font-weight: 600; 
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    margin-top: 40px;
+    
+    /* Garante alinhamento e espaço para o ícone */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.logout-btn-bottom i {
+    font-size: 20px;
+}
+
+.logout-btn-bottom:hover {
+    /* Efeito hover do botão */
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    color: white;
+    transition: 0.5s;
+}
+
+/* OPCIONAL: Remova qualquer estilo antigo que possa ter sido aplicado ao #logoutBtn no topo, se houver. */
+#logoutBtn {
+    /* Sobrescreve o estilo do botão do topo, se ele existir */
+    /* Garante que o botão use a nova classe */
+    padding: 0; 
+    margin: 0;
+    /* Adicione 'display: block !important;' se o botão não estiver ocupando a largura total devido a conflitos */
+}

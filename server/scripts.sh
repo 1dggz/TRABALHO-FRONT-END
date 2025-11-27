@@ -52,7 +52,7 @@ activate_venv_windows() {
 
 install_deps() {
     print_status "Installing dependencies..."
-    pip install --upgrade pip
+    python -m pip install --upgrade pip
     pip install -r requirements.txt
     print_success "Dependencies installed"
 }

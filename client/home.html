@@ -1,25 +1,41 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Organizador de Tarefas</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link rel="stylesheet" href="style.css"> 
+    <title>Minha Lista de Tarefas</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Bem-vindo à página principal!!</h1>
-        <button onclick="logout()" class="logout">Sair</button>
-    </div>
+    <main class="container-todos">
+        <header>
+            <h1>Minhas Tarefas</h1>
+        </header>
 
-    <script>
-        function logout() {
-            alert("Saindo...");
-            window.location.href = "index.html";
-        }
-    </script>
-</body>
+        <h2>Nova Tarefa</h2>
+        <form id="addTaskForm">
+            <input 
+                type="text" 
+                id="newTaskTitle" 
+                placeholder="Título da Tarefa" 
+                required 
+            >
+            <button type="submit">
+                <i class='bx bx-plus-circle'></i> Adicionar
+            </button>
+        </form>
+
+        <h2>Tarefas Pendentes</h2>
+        <ul id="taskList" class="task-list">
+            <p>Carregando tarefas...</p> 
+        </ul>
+        
+        <p id="errorMessage"></p>
+        <button id="logoutBtn" class="logout-btn-bottom">
+                <i class='bx bx-log-out'></i> Sair
+            </button>
+    </main>
+    <script src="home.js"></script>
+    </body>
 </html>
-
-
-<!-- FALTA FAZER A PÁGINA PRINCIPAL-->
